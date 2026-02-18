@@ -206,6 +206,7 @@ nav {
 .name-row1 {
   display: block;
   white-space: nowrap;
+  /* Scale to fit container width */
   font-size: clamp(3.5rem, 7.5vw, 7.5rem);
 }
 .name-row1 .n-black { color: var(--black); }
@@ -455,7 +456,7 @@ nav {
 }
 .mini-stat-val.teal  { color: var(--teal); }
 .mini-stat-val.yellow { color: var(--yellow); }
-.mini-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; }
+.mini-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.75); letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* ════════ EXPERIENCE ════════ */
 .experience { border-bottom: var(--border); }
@@ -637,12 +638,12 @@ footer {
 }
 .f-logo { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--white); letter-spacing:0.06em; }
 .f-logo span { color:var(--teal); }
-.f-copy { font-family:'DM Mono',monospace; font-size:0.7rem; color:rgba(255,255,255,0.3); letter-spacing:0.08em; }
+.f-copy { font-family:'DM Mono',monospace; font-size:0.7rem; color:rgba(255,255,255,0.7); letter-spacing:0.08em; }
 .f-links { display:flex; gap:0.6rem; }
 .f-link {
-  width:34px; height:34px; border:1px solid rgba(255,255,255,0.15);
+  width:34px; height:34px; border:1px solid rgba(255,255,255,0.3);
   display:grid; place-items:center; font-size:0.75rem; font-weight:700;
-  color:rgba(255,255,255,0.45); text-decoration:none; transition:all .15s;
+  color:rgba(255,255,255,0.75); text-decoration:none; transition:all .15s;
 }
 .f-link:hover { background:var(--teal); color:var(--black); border-color:var(--teal); }
 
@@ -669,11 +670,8 @@ footer {
   footer { flex-direction:column; gap:1rem; text-align:center; }
 
   /* ── MOBILE FONT RENDERING FIX ── */
-  /* Increase letter-spacing so M, N, V, A diagonals have room to breathe */
   .hero-name { letter-spacing: 0.07em; }
-  /* Reduce stroke thickness on mobile — 3px causes diagonal cramping */
   .name-row2 { -webkit-text-stroke: 1.5px var(--black); }
-  /* Fix all other Bebas Neue stroke headings */
   .stroke { -webkit-text-stroke: 1.5px var(--black); }
   .sec-heading {
     letter-spacing: 0.05em;
