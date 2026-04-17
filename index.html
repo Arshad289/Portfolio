@@ -11,6 +11,14 @@
 <meta property="og:description" content="Data Scientist with finance expertise. M.S. Business Analytics 3.9 GPA · Python, SQL, ML · Columbus, Ohio.">
 <meta property="og:url" content="https://arshadbuilds.dev/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://arshadbuilds.dev/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arshad Ali Mohammed — Data Scientist">
+<meta name="twitter:description" content="Data Scientist with finance expertise. M.S. Business Analytics 3.9 GPA · Python, SQL, ML · Columbus, Ohio.">
+<meta name="twitter:image" content="https://arshadbuilds.dev/og-preview.png">
+<meta name="author" content="Arshad Ali Mohammed">
+<meta name="theme-color" content="#00c9a7">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2300c9a7'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-size='20' font-weight='bold' fill='%230a0a0a' font-family='sans-serif'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap">
@@ -647,10 +655,76 @@ footer {
 }
 .f-link:hover { background:var(--teal); color:var(--black); border-color:var(--teal); }
 
+/* ════════ SKIP NAV ════════ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--teal);
+  color: var(--black);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  z-index: 10000;
+  border: var(--border);
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ════════ DARK SECTION OVERRIDES ════════ */
+.sec-label-dark { color: rgba(255,255,255,0.35); }
+.sec-heading-dark { color: var(--white); }
+.stroke-teal { -webkit-text-stroke: 2px var(--teal); color: transparent; }
+.contact-right-h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-top: 0.4rem;
+}
+
+/* ════════ HAMBURGER ════════ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 2px solid var(--black);
+  padding: 0.5rem 0.6rem;
+  cursor: none;
+  transition: all 0.15s;
+}
+.nav-hamburger:hover { background: var(--teal); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--black);
+  transition: all 0.2s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
 /* ════════ RESPONSIVE ════════ */
 @media(max-width:980px){
-  nav { padding:1rem 1.5rem; }
-  .nav-links { display:none; }
+  nav { padding:1rem 1.5rem; position:relative; }
+  .nav-hamburger { display:flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: var(--border);
+    flex-direction: column;
+    box-shadow: 0 6px 0 var(--black);
+    z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0.9rem 1.5rem; width: 100%; }
   .hero { grid-template-columns:1fr; }
   .hero-right { display:none; }
   .hero-left { padding:3rem 1.5rem; }
@@ -687,6 +761,8 @@ footer {
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ── CURSOR (two direct elements, no wrapper) ── -->
 <div id="cur-dot" aria-hidden="true"></div>
 <div id="cur-ring" aria-hidden="true"></div>
@@ -719,7 +795,7 @@ footer {
 </div>
 
 <!-- ── NAV ── -->
-<nav>
+<nav aria-label="Main navigation">
   <a class="nav-logo" href="#home">
     <span class="nav-logo-dot"></span>ARSHAD <span class="nav-ali">ALI</span> MOHAMMED
   </a>
@@ -729,9 +805,12 @@ footer {
     <li><a href="#projects">Projects</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#stack">Stack</a></li>
-    <li><a href="Arshad_Ali_Mohammed_Resume.pdf" download target="_blank" rel="noopener">Resume</a></li>
+    <li><a href="Arshad_Ali_Mohammed_Resume.pdf" download>Resume</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me ↗</a></li>
   </ul>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <main id="main-content">
@@ -997,8 +1076,8 @@ footer {
 <section class="stack" id="stack">
   <div class="stack-inner">
     <div class="reveal">
-      <div class="sec-label" style="color:rgba(255,255,255,0.35);">Tools &amp; Technologies</div>
-      <h2 class="sec-heading" style="color:var(--white);">The tech <span style="-webkit-text-stroke:2px var(--teal);color:transparent;">stack</span></h2>
+      <div class="sec-label sec-label-dark">Tools &amp; Technologies</div>
+      <h2 class="sec-heading sec-heading-dark">The tech <span class="stroke-teal">stack</span></h2>
     </div>
     <div class="stack-groups reveal">
       <div class="stack-group">
@@ -1078,8 +1157,8 @@ footer {
       <p class="contact-quote">"I turn messy data into clear narratives — and clear narratives into decisions that move the business forward."</p>
     </div>
     <div class="contact-right reveal">
-      <div class="sec-label" style="color:rgba(255,255,255,0.3);">// Reach out</div>
-      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.04em;color:var(--white);margin-top:0.4rem;">Always open to connect</h3>
+      <div class="sec-label sec-label-dark">// Reach out</div>
+      <h3 class="contact-right-h3">Always open to connect</h3>
       <div class="contact-items">
         <!-- Email set via JS to avoid any CDN mangling -->
         <a class="contact-item" id="email-contact-item" href="#">
@@ -1094,10 +1173,10 @@ footer {
           <div class="c-icon">{ }</div>
           <div><div class="c-lbl">GitHub</div><div class="c-val">github.com/Arshad289</div></div>
         </a>
-        <a class="contact-item" href="#">
+        <div class="contact-item" style="cursor:default;">
           <div class="c-icon">📍</div>
           <div><div class="c-lbl">Location</div><div class="c-val">Columbus, Ohio — Open to remote &amp; relocation</div></div>
-        </a>
+        </div>
       </div>
       <div class="contact-cta">
         <a class="btn btn-teal" id="email-cta" href="#" style="width:100%;justify-content:center;">Send a Message ↗</a>
@@ -1110,7 +1189,7 @@ footer {
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="f-logo">ARSHAD <span>ALI</span> MOHAMMED</div>
-  <div class="f-copy">© 2025 Arshad Ali Mohammed · Columbus, OH · Built with NeoBrutalism ⚡</div>
+  <div class="f-copy">© 2026 Arshad Ali Mohammed · Columbus, OH · Built with NeoBrutalism ⚡</div>
   <div class="f-links">
     <a class="f-link" href="https://www.linkedin.com/in/arshad-ali-m-080110135/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn Profile">in</a>
     <a class="f-link" href="https://github.com/Arshad289" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub Profile">gh</a>
@@ -1251,6 +1330,26 @@ const cntObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(c => cntObs.observe(c));
+
+/* ════════════════════════════════════════════════
+   HAMBURGER MENU
+════════════════════════════════════════════════ */
+const hamburger = document.querySelector('.nav-hamburger');
+const navMenu   = document.querySelector('.nav-links');
+if(hamburger && navMenu){
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 /* ════════════════════════════════════════════════
    ACTIVE NAV
